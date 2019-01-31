@@ -3,4 +3,4 @@
 Run:
 
 * mvn package
-* java -cp target/sort-algorithms-1.0-SNAPSHOT.jar sorter.Main
+* java -cp target/sorter-1.0-SNAPSHOT.jar Main

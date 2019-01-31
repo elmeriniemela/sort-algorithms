@@ -1,5 +1,4 @@
 
-package sorter;
 
 import java.util.Random;
 

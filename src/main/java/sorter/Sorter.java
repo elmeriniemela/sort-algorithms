@@ -1,4 +1,3 @@
-package sorter;
 
 import java.util.Arrays;
 
@@ -19,23 +18,6 @@ public class Sorter {
             original[i] = array[i]; 
         }
 
-    }
-
-    public void countingSort(int keys) {
-        helper = new int[keys];
-        for (int i = 0; i < array.length; i++) {
-            helper[array[i]]++;
-        }
-
-        int pointer = 0;
-        for (int i = 0; i < helper.length; i++) {
-            if (helper[i] != 0) {
-                for (int a = 0; a<helper[i]; a++) {
-                    this.array[pointer] = i;
-                    pointer++;
-                }
-            }
-        }
     }
 
     public void restoreArray() {
@@ -62,8 +44,24 @@ public class Sorter {
         printf("Arrays.sort took %s seconds", (double) (System.currentTimeMillis() - timer) / 1000);
     }
 
+    private void countingSort(int keys) {
+        helper = new int[keys];
+        for (int i = 0; i < array.length; i++) {
+            helper[array[i]]++;
+        }
 
-    public void mergeSort() {
+        int pointer = 0;
+        for (int i = 0; i < helper.length; i++) {
+            if (helper[i] != 0) {
+                for (int a = 0; a<helper[i]; a++) {
+                    this.array[pointer] = i;
+                    pointer++;
+                }
+            }
+        }
+    }
+
+    private void mergeSort() {
         helper = new int[array.length];
 
         int partitionLength, start, leftStart, leftEnd, rightEnd;
@@ -91,7 +89,7 @@ public class Sorter {
 
     }
 
-    public void merge(int leftStart, int leftEnd, int rightStart, int rightEnd) {
+    private void merge(int leftStart, int leftEnd, int rightStart, int rightEnd) {
         int a = leftStart;
         int b = rightEnd;
         for (int i = a; i <=b; i++) {
@@ -110,7 +108,7 @@ public class Sorter {
 
     }
 
-    public void quicksort(int left, int right) {
+    private void quicksort(int left, int right) {
         if (left >= right) {
             return;
         }
@@ -119,7 +117,7 @@ public class Sorter {
         quicksort(k+1, right);
     }
   
-    public int pivot(int a, int b){
+    private int pivot(int a, int b){
         int k = a;
         for (int i = a + 1; i < b + 1; i++) {
             if (array[i] < array[a]) {
@@ -133,14 +131,14 @@ public class Sorter {
         return k;
     }
 
-    public void swap(int a, int b) {
+    private void swap(int a, int b) {
         int tempB = array[b];
         array[b] = array[a];
         array[a] = tempB;
 
     }
 
-    public static void printf(String string, Object...args) {
+    private static void printf(String string, Object...args) {
         System.out.println(String.format(string, args));
     }
 }
